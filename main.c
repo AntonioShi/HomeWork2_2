@@ -62,10 +62,11 @@ int DLNodeInsert(DLNode *head, int i, DataType s){
 void InsertInTheLast(DLNode *head, DLNode *x){
     DLNode *p, *s ;
 
-    p = head->next ;
-    while (p->next != head) {
-        p = p->next ;
-    }
+//    p = head->next ;
+//    while (p->next != head) {
+//        p = p->next ;
+//    }
+    p = head->prior ;//直接到达尾节点的位置
 
     if(p->next == head)
     {
@@ -159,7 +160,7 @@ void DLNodeSort(DLNode *a, DLNode *b, DLNode *c){
 //    }
 
     //比较相同长度的部分
-    for (; p != a && q != b; ) {
+    for (; p != a && q != b; ) {//因为药比较共同长度的项,所以时间复杂度至少为O(min)
         if(p->data > q->data) {
             //得到最大的数,作为新节点的第一个数据项
             InsertInTheLast(c, p);
